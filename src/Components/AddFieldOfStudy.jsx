@@ -37,7 +37,7 @@ const AddFieldOfStudy = () => {
 
   return (
     <div className="container-fluid">
-      <h3 className="mb-4">Add Field of Study</h3>
+      <h3 className="container-fluid mb-4">Add Field of Study</h3>
 
       {/* Field of Study Details Section */}
       <div className="card mb-4">
@@ -59,7 +59,7 @@ const AddFieldOfStudy = () => {
                   required
                 />
               </div>
-              <div className="col-md-6">
+              <div className="col-md-6 col-lg-4 mb-3">
                 <label htmlFor="fieldOfStudyCodeInput" className="form-label">Field of Study Code</label>
                 <input
                   type="text"

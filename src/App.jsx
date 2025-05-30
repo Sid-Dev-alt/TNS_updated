@@ -3,7 +3,8 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Layout from "./Components/Layout";
 import AddFieldOfStudy from "./Components/AddFieldOfStudy";
 import FieldOfStudyList from "./Components/FieldOfStudyList"; 
-
+import AddDepartment from "./Components/AddDept";
+import AddDept from "./Components/AddDept";
 
 
 
@@ -23,11 +24,11 @@ const CampusList = () => (
     <h3>Campus List Content</h3>
   </div>
 );
-const AddDepartment = () => (
-  <div className="container-fluid">
-    <h3>Add Department Content</h3>
-  </div>
-);
+// const AddDepartment = () => (
+//   <div className="container-fluid">
+//     <h3>Add Department Content</h3>
+//   </div>
+// );
 const DepartmentList = () => (
   <div className="container-fluid">
     <h3>Department List Content</h3>
@@ -49,8 +50,9 @@ function App() {
             element={<FieldOfStudyList />}
           />{" "}
 
-          <Route path="/departments/add" element={<AddDepartment />} />
+          <Route path="/departments/add" element={<AddDept />} />
           <Route path="/departments/list" element={<DepartmentList />} />
+          
         </Routes>
       </Layout>
     </Router>
