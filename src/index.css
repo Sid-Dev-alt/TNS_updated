@@ -1,47 +1,68 @@
+/* General body styles */
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: #e0f2f7;
+}
+
+/* Custom color classes */
 .bg-tnits-dark {
   background-color: #1a2a40 !important;
   color: white;
 }
 
 .bg-tnits-light {
-  background-color: #aac4c5 !important;
+  background-color: #2c2b3f !important; /* Lighter background for sidebar */
 }
+
 .mb-0 h5 {
   color: black;
 }
 
+/* Navbar specific styles */
 .navbar {
-  height: 75px;
+  height: 55px;
   display: flex;
   align-items: center;
   overflow: hidden;
+  position: sticky; /* Sticky to top */
+  top: 0;
+  width: 100%;
+  z-index: 1020; /* Ensure navbar is above other content but below mobile sidebar */
 }
 
 .navbar .container-fluid {
-  padding-top: 0;
-  padding-bottom: 0;
+    padding-top: 0;
+    padding-bottom: 0;
 }
 
-.navbar .navbar-brand img {
-  height: 150px;
-  width: 249px;
+.navbar .navbar-brand img{
+  height: 100%;
   width: auto;
   object-fit: contain;
 }
 
+/* Sidebar specific styles */
 .sidebar {
   min-width: 250px;
   max-width: 250px;
-  background-color: #2e445b;
+  background-color: #2e445b; /* This is the dark blue. If you want .bg-tnits-light (#aac4c5) then change this. */
   color: #c0d9e9;
-  transition: all 0.3s;
+  transition: all 0.3s ease;
+  z-index: 1030; /* Should be higher than content, lower than mobile backdrop */
 }
 
+/* Sidebar link styling */
 .sidebar a {
   color: #c0d9e9;
   text-decoration: none;
   padding: 10px 15px;
-  display: block;
+  display: flex; /* For icon-text alignment */
+  align-items: center;
 }
 
 .sidebar a:hover {
@@ -55,41 +76,152 @@
   border-left: 3px solid #66ccff;
 }
 
+/* Sidebar section headers (Field of Study, Departments) */
 .sidebar .nav-link-header {
   color: #a0c2e0;
   padding: 10px 15px;
   font-weight: bold;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  user-select: none;
+  transition: background-color 0.2s ease;
 }
 
-/*  content area for sidebar */
+.sidebar .nav-link-header:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.sidebar .nav-link-header i {
+  transition: transform 0.2s ease;
+}
+
+/* Style for nested sub-menus */
+.sub-menu {
+  padding-left: 5px;
+}
+
+/* Content wrapper (main area next to sidebar) */
 .content-wrapper {
   flex-grow: 1;
   padding: 20px;
+  transition: margin-left 0.3s ease;
 }
 
-.add-field-of-study-card {
-  background-color: white;
+/* Card and Form styling */
+.card {
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  padding: 30px;
-  margin-top: 20px;
+  border: none;
 }
 
-/* Responsivnes */
-@media (max-width: 991.98px) {
+.card-header {
+  border-bottom: none;
+  border-top-left-radius: 10px !important;
+  border-top-right-radius: 10px !important;
+}
+
+/* For the specific small, square/circular buttons (if you implemented them) */
+.btn-icon-square {
+  width: 38px;
+  height: 38px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+  flex-shrink: 0;
+}
+
+.btn-icon-circle {
+  width: 38px;
+  height: 38px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+
+/* Responsiveness for Sidebar (Critical Section) */
+@media (max-width: 991.98px) { /* Applies to screens smaller than 992px (Bootstrap's lg breakpoint) */
   .sidebar {
-    position: fixed;
+    position: fixed; /* Fixed position relative to viewport */
     top: 0;
-    left: -250px;
-    height: 100%;
-    z-index: 1040;
+    left: -250px; /* Hidden off-screen by default */
+    height: 100%; /* Full viewport height */
+    z-index: 1050; /* Higher than backdrop */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* Add subtle shadow */
   }
 
   .sidebar.show {
-    left: 0;
+    left: 0; /* Slides into view */
   }
 
+  /* This class will be added to the <body> when the sidebar is open */
   body.sidebar-open {
-    margin-left: 250px;
+    overflow: hidden; /* Prevents scrolling on the main content when sidebar is open */
   }
+
+  /* Offcanvas Backdrop (Crucial for mobile) */
+  .offcanvas-backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: #000;
+    opacity: 0; /* Hidden by default */
+    transition: opacity 0.3s ease;
+    z-index: 1040; /* Between sidebar and content */
+    pointer-events: none; /* Allows clicks through when hidden */
+  }
+
+  .offcanvas-backdrop.show {
+    opacity: 0.5; /* Visible when sidebar is open */
+    pointer-events: auto; /* Blocks clicks when visible */
+  }
+
+  /* Adjust content-wrapper when sidebar is open on mobile */
+  /* If you are using margin-left on body for desktop, reset it here */
+  body.sidebar-open .content-wrapper {
+      margin-left: 0; /* Ensure content doesn't shift if body had margin */
+  }
+}
+
+/* Desktop Sidebar Collapse (Applies to screens 992px and up) */
+@media (min-width: 992px) {
+    .sidebar.collapsed {
+        min-width: 70px; /* Collapsed width */
+        max-width: 70px;
+    }
+
+    /* Adjust content wrapper margin when sidebar is collapsed */
+    body.sidebar-collapsed .content-wrapper {
+        margin-left: -180px; /* If sidebar goes from 250px to 70px, this hides 180px */
+    }
+
+    /* Hide text/headers in collapsed state */
+    .sidebar.collapsed .nav-link span,
+    .sidebar.collapsed .nav-link-header span {
+        display: none;
+    }
+
+    /* Adjust icons for collapsed state */
+    .sidebar.collapsed .nav-link i,
+    .sidebar.collapsed .nav-link-header i {
+        margin-right: 0 !important; /* Remove right margin */
+        justify-content: center; /* Center icons */
+        width: 100%; /* Make them take full width of slimmed down link area */
+    }
+
+    .sidebar.collapsed .nav-link,
+    .sidebar.collapsed .nav-link-header {
+        padding: 10px 0; /* Adjust padding for slim state */
+    }
+
+    .sidebar.collapsed .sub-menu {
+        display: none; /* Hide sub-menus entirely when collapsed */
+    }
 }

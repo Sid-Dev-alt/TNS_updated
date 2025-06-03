@@ -2,21 +2,22 @@ import React, { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 
 const Sidebar = ({ isSidebarOpen, toggleSidebar }) => {
+  // Keep toggleSidebar as per your old code
   const location = useLocation();
 
   const [isFieldOfStudyOpen, setIsFieldOfStudyOpen] = useState(true);
-
   const [isDepartmentsOpen, setIsDepartmentsOpen] = useState(true);
 
   const handleLinkClick = () => {
     if (window.innerWidth < 992) {
-      toggleSidebar();
+      toggleSidebar(); // This will close the sidebar on mobile
     }
   };
 
   return (
     <nav
-      className={`sidebar bg-tnitsnav-light p-3 d-flex flex-column ${
+      className={`sidebar bg-tnits-light p-3 d-flex flex-column ${
+        // Changed bg-tnitsnav-light to bg-tnits-light
         isSidebarOpen ? "show" : ""
       }`}
     >
