@@ -16,7 +16,7 @@ const Sidebar = ({ isSidebarOpen, toggleSidebar }) => {
 
   return (
     <nav
-      className={`sidebar bg-tnits-light p-3 d-flex flex-column ${
+      className={`sidebar bg-tnits-light-nav p-3 d-flex flex-column ${
         // Changed bg-tnitsnav-light to bg-tnits-light
         isSidebarOpen ? "show" : ""
       }`}

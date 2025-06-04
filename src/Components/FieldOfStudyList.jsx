@@ -32,14 +32,11 @@ const FieldOfStudyList = () => {
       <h3 className="mb-4">List of Field of Study</h3>
 
       <div className="d-flex justify-content-end mb-3">
-        <div className="input-group" style={{ maxWidth: "300px" }}>
-         
-        </div>
+        <div className="input-group" style={{ maxWidth: "300px" }}></div>
       </div>
 
-      <div className="table-responsive add-field-of-study-card p-3">
+      <div className="table-responsive add-field-of-study-card p-3 ">
         {" "}
-     
         <table className="table table-striped table-hover">
           <thead className="table-light">
             <tr>

@@ -16,7 +16,11 @@ body {
 }
 
 .bg-tnits-light {
-  background-color: #2c2b3f !important; /* Lighter background for sidebar */
+  background-color: #ABC3C5 !important; /* Lighter background for sidebar */
+}
+
+.bg-tnits-light-nav {
+  background-color: wheat;
 }
 
 .mb-0 h5 {
@@ -50,7 +54,7 @@ body {
 .sidebar {
   min-width: 250px;
   max-width: 250px;
-  background-color: #2e445b; /* This is the dark blue. If you want .bg-tnits-light (#aac4c5) then change this. */
+  background-color: #1a2a40; /* This is the dark blue. If you want .bg-tnits-light (#aac4c5) then change this. */
   color: #c0d9e9;
   transition: all 0.3s ease;
   z-index: 1030; /* Should be higher than content, lower than mobile backdrop */

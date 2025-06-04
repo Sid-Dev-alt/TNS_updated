@@ -62,7 +62,7 @@ const AddDept = () => {
   return (
     <div className="container mt-4">
       <div className="card">
-        <div className="card-header bg-secondary text-white">
+        <div className="card-header bg-tnits-light text-black">
           <h5 className="mb-0">Department Details</h5>
         </div>
         <div className="card-body">
@@ -74,7 +74,9 @@ const AddDept = () => {
                 </label>
                 <input
                   type="text"
-                  className={`form-control ${errors.department ? "is-invalid" : ""}`}
+                  className={`form-control ${
+                    errors.department ? "is-invalid" : ""
+                  }`}
                   id="department"
                   name="department"
                   value={formData.department}
@@ -92,7 +94,9 @@ const AddDept = () => {
                 </label>
                 <input
                   type="number"
-                  className={`form-control ${errors.fieldOfStudyCode ? "is-invalid" : ""}`}
+                  className={`form-control ${
+                    errors.fieldOfStudyCode ? "is-invalid" : ""
+                  }`}
                   id="fieldOfStudyCode"
                   name="fieldOfStudyCode"
                   value={formData.fieldOfStudyCode}
@@ -100,7 +104,9 @@ const AddDept = () => {
                   placeholder="Field of Study Code"
                 />
                 {errors.fieldOfStudyCode && (
-                  <div className="invalid-feedback">{errors.fieldOfStudyCode}</div>
+                  <div className="invalid-feedback">
+                    {errors.fieldOfStudyCode}
+                  </div>
                 )}
               </div>
 
@@ -109,7 +115,9 @@ const AddDept = () => {
                   Field of Study <span className="text-danger">*</span>
                 </label>
                 <select
-                  className={`form-select ${errors.fieldOfStudy ? "is-invalid" : ""}`}
+                  className={`form-select ${
+                    errors.fieldOfStudy ? "is-invalid" : ""
+                  }`}
                   id="fieldOfStudy"
                   name="fieldOfStudy"
                   value={formData.fieldOfStudy}
@@ -134,7 +142,9 @@ const AddDept = () => {
                 Description
               </label>
               <textarea
-                className={`form-control ${errors.description ? "is-invalid" : ""}`}
+                className={`form-control ${
+                  errors.description ? "is-invalid" : ""
+                }`}
                 id="description"
                 name="description"
                 value={formData.description}
